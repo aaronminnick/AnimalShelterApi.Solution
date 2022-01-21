@@ -19,9 +19,21 @@ namespace AnimalShelterApi.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Animal>>> GetAll()
+    public async Task<ActionResult<List<Animal>>> GetAll(string species, string breed)
     {
-      return await _db.Animals.ToListAsync();
+      IQueryable<Animal> query = _db.Animals.AsQueryable();
+
+      if (species != null)
+      {
+        query = query.Where(animal => animal.Species == species);
+      }
+
+      if (breed != null)
+      {
+        query = query.Where(animal => animal.Breed == breed);
+      }
+
+      return await query.ToListAsync();
     }
 
     [HttpGet("{id}")]
