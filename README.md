@@ -22,7 +22,7 @@ This project implements Swagger for automated documentation and interaction with
 >Optionally, species and breed parameters may be provided. The above will return a list of all animals in the shelter whose Species and Breed properties match the specified parameters.
 
 >**POST: /api/animals**  
->Adds an animal to the shelter database. AnimalId will be assigned automatically upon creation, but name, species, and breed paramaters should be provided (see example below):
+>Adds an animal to the shelter database. AnimalId will be assigned automatically upon creation, but name, species, and breed paramaters should be provided in the body of the request (see example below):
 >```
 >{
 >  "Name" = "Fido",
@@ -38,7 +38,7 @@ This project implements Swagger for automated documentation and interaction with
 >*(Example: /api/animals/5 will return the animal with AnimalId == 5)*
 
 >**PUT: /api/animals/{id}**  
->Edits the record for a specific animal in the database, determined by {id}. The AnimalId property must be provided in addition to any properties being edited. The AnimalId must match the id in the URL for correct functionality (example):
+>Edits the record for a specific animal in the database, determined by {id}. The AnimalId property must be provided in the body of your request, in addition to any properties being edited. The AnimalId must match the id in the URL for correct functionality (example):
 >```
 >{
 >  "AnimalId" = 1,
@@ -110,4 +110,4 @@ n/a at this time
 _Thanks for reading! Please feel free to contact me with feedback!_
 ***
 #### [License: MIT](https://opensource.org/licenses/MIT)
-#### Copyright (c) 2021 Aaron Minnick
+#### Copyright (c) 2022 Aaron Minnick
