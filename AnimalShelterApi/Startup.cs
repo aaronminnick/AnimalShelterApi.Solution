@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 namespace AnimalShelterApi
 {
@@ -24,6 +25,11 @@ namespace AnimalShelterApi
     {
       services.AddMvc();
 
+      services.AddSwaggerGen(c =>
+      {
+        c.SwaggerDoc("v1", new OpenApiInfo {Title = "Animal Shelter API", Version = "v1"});
+      });
+
       services.AddEntityFrameworkMySql()
         .AddDbContext<AnimalShelterContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
@@ -33,18 +39,20 @@ namespace AnimalShelterApi
     {
       app.UseDeveloperExceptionPage();
 
-      // app.UseAuthentication();
-
       app.UseRouting();
 
-      // app.UseAuthorization();
-
-      app.UseEndpoints(routes =>
+      app.UseEndpoints(endpoints =>
       {
-        routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+        endpoints.MapControllers();
+        endpoints.MapSwagger();
       });
-      
-      app.UseStaticFiles();
+
+      app.UseSwagger();
+
+      app.UseSwaggerUI(c =>
+      {
+        c.SwaggerEndpoint("v1/swagger.json", "Animal Shelter API v1");
+      });
 
       app.Run(async (context) =>
       {
