@@ -1,13 +1,14 @@
 using AnimalShelterApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace AnimalShelterApi.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("api/animals")]
   [ApiController]
   public class AnimalsController : ControllerBase
   {
@@ -47,6 +48,16 @@ namespace AnimalShelterApi.Controllers
       }
 
       return animal;
+    }
+
+    [HttpGet("random")]
+    public async Task<ActionResult<Animal>> GetRandom()
+    {
+      List<Animal> animals = await _db.Animals.ToListAsync();
+      Random rand = new Random();
+      int randomId = rand.Next(0, animals.Count);
+      Animal randomAnimal = animals[randomId];
+      return randomAnimal;
     }
 
     [HttpPost]
