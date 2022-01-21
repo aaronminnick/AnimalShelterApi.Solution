@@ -9,9 +9,9 @@ namespace AnimalShelterApi.Models
 
     public AnimalShelterContext(DbContextOptions options) : base(options) {}
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-      optionsBuilder.UseLazyLoadingProxies();
-    }
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //   optionsBuilder.UseLazyLoadingProxies();
+    // }
   }
 }

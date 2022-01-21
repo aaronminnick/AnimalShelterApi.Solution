@@ -29,8 +29,7 @@ namespace AnimalShelterApi.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Species")
-                        .IsRequired()
-                        .HasColumnType("varchar(16)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("AnimalId");
 
