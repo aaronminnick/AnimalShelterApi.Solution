@@ -1,0 +1,16 @@
+@using AnimalShelterConsumer.Models;
+
+<h2>Animal Shelter</h2>
+
+@if(ViewBag.Animals != null && ViewBag.Animals.Count > 0)
+{
+  @foreach (Animal animal in ViewBag.Animals)
+  {
+    <div class="animal-card">
+      <hr />
+      <h4>@animal.Name</h4>
+      <p>@animal.Breed <em>(@animal.Species)</em></p>
+      <hr />
+    </div>
+  }
+}
