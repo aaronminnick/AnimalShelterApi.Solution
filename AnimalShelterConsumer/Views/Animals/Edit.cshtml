@@ -1,0 +1,17 @@
+@model AnimalShelterConsumer.Models.Animal
+
+<h2>Edit @Model.Name's Details:</h2>
+@using (Html.BeginForm("Edit"))
+{
+  <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+  <input name="AnimalId" value=@Model.AnimalId hidden>
+  <label for="name">Name: </label>
+  <input id="name" name="Name" type="text" value=@Model.Name>
+  <br>
+  <label for="species">Species: </label>
+  <input id="species" name="Species" type="text" value=@Model.Species>
+  <br>
+  <label for="breed">Breed: </label>
+  <input id="breed" name="Breed" type="text" value=@Model.Breed>
+  <button type="submit" class="btn btn-dark">Save changes</button>
+}

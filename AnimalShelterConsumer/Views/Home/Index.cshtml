@@ -1,16 +1,33 @@
-@using AnimalShelterConsumer.Models;
+@using AnimalShelterConsumer.Models
 
-<h2>Animal Shelter</h2>
+<h2>Animal Shelter Database Management</h2>
+<div class="row">
+  <div class="col-8">
+    @if(ViewBag.Animals != null && ViewBag.Animals.Count > 0)
+    {
+      @foreach (Animal animal in ViewBag.Animals)
+      {
+        <div class="animal-card">
+          <hr />
+          <h4>@animal.Name</h4>
+          <p>@animal.Breed <em>(@animal.Species)</em></p>
+          @using (Html.BeginForm("Edit", "Animals", new {id = animal.AnimalId}))
+          {
+          <button type="submit">Edit</button>
+          }
+          @using (Html.BeginForm("Delete", "Animals", new {id = animal.AnimalId}))
+          {
+          <button type="submit">Delete</button>
+          }
+          <hr />
+        </div>
+      }
+    }
+    else
+    {
+      <p>No animals in database.</p>
+    }
+  </div>
+</div>
 
-@if(ViewBag.Animals != null && ViewBag.Animals.Count > 0)
-{
-  @foreach (Animal animal in ViewBag.Animals)
-  {
-    <div class="animal-card">
-      <hr />
-      <h4>@animal.Name</h4>
-      <p>@animal.Breed <em>(@animal.Species)</em></p>
-      <hr />
-    </div>
-  }
-}
+<script src="~/js/index.js"></script>
