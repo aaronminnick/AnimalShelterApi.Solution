@@ -90,6 +90,8 @@ $ dotnet run
 
 * **Or** you may use Postman or a similar application to send requests to the API endpoints detailed above.
 
+&nbsp;
+
 ### appsettings.json
 In order for Entity Framework to construct your database correctly, you will need to create a file appsettings.json in the AnimalShelterApi project directory, with the following contents:
 
@@ -101,6 +103,32 @@ In order for Entity Framework to construct your database correctly, you will nee
 }
 ```
 Be sure to replace the password value with your actual password. Depending on how you have configured your MySql server, you may need to make additional edits to properties in this file.  
+&nbsp;
+
+---
+## API Consumer Application
+
+The "consumer" branch of this repository contains a WIP application to consume the API and provide a UI for interacting with the API's database. The application is currently incomplete and some features do not function.
+
+If you wish to use this application, follow the below additional setup instructions:  
+* Be sure the API application has been set up and is currently running.
+* Switch to the consumer branch:
+```
+$ git checkout consumer
+```
+* Navigate to the consumer project:
+```
+$ cd AnimalShelterConsumer
+```
+* Restore packages:
+```
+$ dotnet restore
+```
+* Run the application, which will be accesible at **localhost:5002/**.
+```
+$ dotnet run
+```
+
 &nbsp;
 
 ---
