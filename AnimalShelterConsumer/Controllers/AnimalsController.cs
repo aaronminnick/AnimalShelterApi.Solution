@@ -6,7 +6,7 @@ namespace AnimalShelterConsumer.Controllers
   public class AnimalsController : Controller
   {
 
-    [HttpGet]
+    [HttpGet("edit/{id}")]
     public ActionResult Edit(int id)
     {
       Animal model = Animal.GetAnimal(id);

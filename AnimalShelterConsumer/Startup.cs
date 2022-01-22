@@ -30,9 +30,9 @@ namespace AnimalShelterConsumer
 
       app.UseRouting();
 
-      app.UseEndpoints(routes =>
+      app.UseEndpoints(endpoints =>
       {
-        routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+        endpoints.MapControllers();
       });
       
       app.UseStaticFiles();

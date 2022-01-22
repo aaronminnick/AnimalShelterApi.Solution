@@ -1,7 +1,7 @@
 @model AnimalShelterConsumer.Models.Animal
 
 <h2>Edit @Model.Name's Details:</h2>
-@using (Html.BeginForm("Edit"))
+@using (Html.BeginForm("Edit", "Animals"))
 {
   <button type="submit" disabled style="display: none" aria-hidden="true"></button>
   <input name="AnimalId" value=@Model.AnimalId hidden>
@@ -13,5 +13,6 @@
   <br>
   <label for="breed">Breed: </label>
   <input id="breed" name="Breed" type="text" value=@Model.Breed>
+  <br>
   <button type="submit" class="btn btn-dark">Save changes</button>
 }

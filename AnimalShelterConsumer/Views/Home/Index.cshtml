@@ -11,11 +11,11 @@
           <hr />
           <h4>@animal.Name</h4>
           <p>@animal.Breed <em>(@animal.Species)</em></p>
-          @using (Html.BeginForm("Edit", "Animals", new {id = animal.AnimalId}))
+          @using (Html.BeginForm("Edit", "Animals", new {id = animal.AnimalId}, FormMethod.Get))
           {
           <button type="submit">Edit</button>
           }
-          @using (Html.BeginForm("Delete", "Animals", new {id = animal.AnimalId}))
+          @using (Html.BeginForm("Delete", "Animals", new {id = animal.AnimalId}, FormMethod.Get))
           {
           <button type="submit">Delete</button>
           }
